@@ -1,5 +1,31 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-.root{
-	-fx-background-color: #828282;
-	 
+
+.root
+{
+	-fx-background-color: #3D403D;
+}
+
+#upPane
+{
+	-fx-background-color: #555666;
+}
+
+#leftPane
+{
+	-fx-background-color: #2C02CF;
+}
+
+#centerPane
+{
+	-fx-background-color: #3D403D;
+}
+
+#rightPane
+{
+	-fx-background-color: #4D5E7F;
+}
+
+#downPane
+{
+	-fx-background-color: #4E5F73;
 }
