@@ -2,30 +2,99 @@
 
 .root
 {
-	-fx-background-color: #3D403D;
+	-fx-background-color: #2C302C;
 }
 
 #upPane
 {
-	-fx-background-color: #555666;
+	-fx-border-width: 0 0 1 0;
+	-fx-border-style:solid;
+	-fx-border-color: #1B201B;
+	-fx-min-height:70px;
 }
 
 #leftPane
 {
-	-fx-background-color: #2C02CF;
+	-fx-border-width: 0 1 0 0;
+	-fx-border-style:solid;
+	-fx-border-color: #1B201B;
+	-fx-min-width: 170px;
 }
 
 #centerPane
 {
-	-fx-background-color: #3D403D;
+	-fx-background-color: #0A100B;
 }
 
 #rightPane
 {
-	-fx-background-color: #4D5E7F;
+	
 }
 
 #downPane
 {
-	-fx-background-color: #4E5F73;
+	
+}
+
+#menuButtons
+{
+	-fx-background-color: #2C302C;
+    -fx-padding: 3 30 3 30;
+    -fx-text-fill: #989997;
+    -fx-font-size: 16px;
+}
+
+#menuButtons:hover
+{
+	-fx-background-color: #1B201B;
+}
+
+#menuButtons:pressed
+{
+	-fx-text-fill: white;
+}
+
+#menuButtonsClicked
+{
+	-fx-background-color: #2C302C;
+	-fx-padding: 3 30 3 26;
+	-fx-text-fill: white;
+	-fx-border-color:#69DB5A;
+	-fx-border-width: 0 0 0 4;
+	-fx-font-size: 17px;
+}
+
+#menuButtonsClicked:hover
+{
+	-fx-background-color: #1B201B;
+}
+
+#menuLabel
+{
+	-fx-font-size: 16px;
+	-fx-padding: 5 30 5 10;
+	-fx-text-fill: #989997;
+}
+
+#UpPanelMenu
+{
+    -fx-background-color: #2C302C;
+    -fx-font-size: 15px;
+}
+
+#UpPanelMenu .label
+{
+    -fx-text-fill: #989997;
+}
+
+#szukaj
+{
+	-fx-min-width:100px;
+	-fx-font-size:15px;
+	-fx-background-radius: 50px;
+}
+
+#szukaj:focused
+{
+	-fx-background-color: #2C302C ,-fx-box-border,-fx-control-inner-background;
 }

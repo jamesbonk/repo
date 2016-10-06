@@ -2,16 +2,20 @@ package application;
 	
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -22,9 +26,13 @@ public class Main extends Application {
 	double height = dim.getHeight()-70;
 	MenuButton file,edit,view;
 	FlowPane centerPane;
-	HBox upPane, downPane;
+	HBox downPane;
+	GridPane upPane;
 	VBox leftPane, rightPane;
 	BorderPane borderPane;
+	Listener listener;
+	ToggleButton playlisty, przegladaj, utwory, albumy, wykonawcy;
+	TextField szukaj;
 	
 	@Override
 	
@@ -32,48 +40,32 @@ public class Main extends Application {
 	{
 		primaryStage.setTitle("Sptf");
 		borderPane = new BorderPane();
+		listener = new Listener(this);
+		
+		//left panel//
+			setLeftButtons();
 		
 		//up panel//
 		file = new MenuButton("File");
+		file.setId("UpPanelMenu");
 		edit = new MenuButton("Edit");
+		edit.setId("UpPanelMenu");
 		view = new MenuButton("View");
-		
-		upPane = new HBox();
+		view.setId("UpPanelMenu");
+		szukaj = new TextField("Szukaj");
+		szukaj.setId("szukaj");
+			
+		upPane = new GridPane();
 		upPane.setId("upPane");
-		
-		upPane.getChildren().add(file);
-		upPane.getChildren().add(edit);
-		upPane.getChildren().add(view);
-		
+			
+		upPane.add(file, 0, 0, 1, 1);
+		upPane.add(edit, 1, 0, 1, 1);
+		upPane.add(view, 2, 0, 1, 1);
+		upPane.add(szukaj, 2, 1, 1, 1);
+			
 		borderPane.setTop(upPane);
-		
-		//left panel//
-		Label menuLabel = new Label("Menu G³ówne");
-		
-		ToggleGroup menuGroup = new ToggleGroup();
-		
-		ToggleButton przegladaj = new ToggleButton("Przegl¹daj");
-		przegladaj.setToggleGroup(menuGroup);
-		
-		ToggleButton utwory = new ToggleButton("Utwory");
-		utwory.setToggleGroup(menuGroup);
-		
-		ToggleButton albumy = new ToggleButton("Albumy"); 
-		albumy.setToggleGroup(menuGroup);
-		
-		ToggleButton wykonawcy = new ToggleButton("Wykonawcy"); 
-		wykonawcy.setToggleGroup(menuGroup);
-		
-		ToggleButton playlisty = new ToggleButton("Playlisty");
-		playlisty.setToggleGroup(menuGroup);
-		
-		Button nowaPlaylista = new Button("Nowa playlista");
-		
-		leftPane = new VBox(menuLabel,przegladaj,utwory,albumy,wykonawcy,playlisty,nowaPlaylista);
-		leftPane.setId("leftPane");
-		
-		borderPane.setLeft(leftPane);
-		
+			
+			
 		//center panel
 		centerPane = new FlowPane();
 		centerPane.setId("centerPane");
@@ -106,5 +98,47 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public void setLeftButtons()
+	{
+		Label menuLabel = new Label("Menu G³ówne");
+		menuLabel.setId("menuLabel");
+		
+		ToggleGroup menuGroup = new ToggleGroup();
+		
+		przegladaj = new ToggleButton("Przegl¹daj");
+		przegladaj.setToggleGroup(menuGroup);
+		przegladaj.setId("menuButtonsClicked");
+		przegladaj.setOnAction(listener);
+		
+		utwory = new ToggleButton("Utwory");
+		utwory.setToggleGroup(menuGroup);
+		utwory.setId("menuButtons");
+		utwory.setOnAction(listener);
+		
+		albumy = new ToggleButton("Albumy"); 
+		albumy.setToggleGroup(menuGroup);
+		albumy.setId("menuButtons");
+		albumy.setOnAction(listener);
+		
+		wykonawcy = new ToggleButton("Wykonawcy"); 
+		wykonawcy.setToggleGroup(menuGroup);
+		wykonawcy.setId("menuButtons");
+		wykonawcy.setOnAction(listener);
+		
+		playlisty = new ToggleButton("Playlisty");
+		playlisty.setToggleGroup(menuGroup);
+		playlisty.setId("menuButtons");
+		playlisty.setOnAction(listener);
+		
+		listener.setFirstClicked();
+		
+		Button nowaPlaylista = new Button("Nowa playlista");
+		
+		leftPane = new VBox(menuLabel,przegladaj,utwory,albumy,wykonawcy,playlisty,nowaPlaylista);
+		leftPane.setId("leftPane");
+		
+		borderPane.setLeft(leftPane);
 	}
 }
