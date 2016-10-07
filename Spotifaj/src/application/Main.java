@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -24,7 +25,7 @@ public class Main extends Application {
 	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 	double width = dim.getWidth();
 	double height = dim.getHeight()-70;
-	MenuButton file,edit,view;
+	MenuButton file,edit,view,help;
 	FlowPane centerPane;
 	HBox downPane;
 	GridPane upPane;
@@ -33,37 +34,21 @@ public class Main extends Application {
 	Listener listener;
 	ToggleButton playlisty, przegladaj, utwory, albumy, wykonawcy;
 	TextField szukaj;
+	ProgressBar musicBar;
 	
 	@Override
 	
 	public void start(Stage primaryStage) 
 	{
-		primaryStage.setTitle("Sptf");
+		primaryStage.setTitle("Szpotifaj");
 		borderPane = new BorderPane();
 		listener = new Listener(this);
 		
 		//left panel//
-			setLeftButtons();
+		setLeftButtons();
 		
 		//up panel//
-		file = new MenuButton("File");
-		file.setId("UpPanelMenu");
-		edit = new MenuButton("Edit");
-		edit.setId("UpPanelMenu");
-		view = new MenuButton("View");
-		view.setId("UpPanelMenu");
-		szukaj = new TextField("Szukaj");
-		szukaj.setId("szukaj");
-			
-		upPane = new GridPane();
-		upPane.setId("upPane");
-			
-		upPane.add(file, 0, 0, 1, 1);
-		upPane.add(edit, 1, 0, 1, 1);
-		upPane.add(view, 2, 0, 1, 1);
-		upPane.add(szukaj, 2, 1, 1, 1);
-			
-		borderPane.setTop(upPane);
+		setUpButtons();
 			
 			
 		//center panel
@@ -79,9 +64,12 @@ public class Main extends Application {
 		
 		
 		//bottom panel
-		Label labi = new Label("Dolny");
-		downPane = new HBox();
-		downPane.setMinWidth(60);
+		musicBar = new ProgressBar();
+		musicBar.setMinWidth(1000);
+		musicBar.setMaxHeight(2);
+		musicBar.setId("musicBar");
+		Label lab = new Label("Przelaczanieblablablablablablabla");
+		downPane = new HBox(lab,musicBar);
 		downPane.setId("downPane");
 		borderPane.setBottom(downPane);
 		
@@ -98,6 +86,31 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public void setUpButtons()
+	{
+		file = new MenuButton("File");
+		file.setId("UpPanelMenu");
+		edit = new MenuButton("Edit");
+		edit.setId("UpPanelMenu");
+		view = new MenuButton("View");
+		view.setId("UpPanelMenu");
+		help = new MenuButton("Help");
+		help.setId("UpPanelMenu");
+		szukaj = new TextField("Szukaj");
+		szukaj.setId("szukaj");
+			
+		upPane = new GridPane();
+		upPane.setId("upPane");
+			
+		upPane.add(file, 0, 0, 1, 1);
+		upPane.add(edit, 1, 0, 1, 1);
+		upPane.add(view, 2, 0, 1, 1);
+		upPane.add(help, 3, 0, 1, 1);
+		upPane.add(szukaj, 3, 1, 1, 1);
+			
+		borderPane.setTop(upPane);
 	}
 	
 	public void setLeftButtons()
@@ -135,6 +148,7 @@ public class Main extends Application {
 		listener.setFirstClicked();
 		
 		Button nowaPlaylista = new Button("Nowa playlista");
+		nowaPlaylista.setId("nowaPlaylistaButton");
 		
 		leftPane = new VBox(menuLabel,przegladaj,utwory,albumy,wykonawcy,playlisty,nowaPlaylista);
 		leftPane.setId("leftPane");

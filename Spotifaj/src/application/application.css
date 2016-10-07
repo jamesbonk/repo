@@ -1,15 +1,21 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
+@font-face
+{
+	src: url("file:/H:/LatoFont/Lato-Regular.ttf");
+}
+
 .root
 {
 	-fx-background-color: #2C302C;
+	-fx-font-family: Lato;
 }
 
 #upPane
 {
 	-fx-border-width: 0 0 1 0;
 	-fx-border-style:solid;
-	-fx-border-color: #1B201B;
+	-fx-border-color: #000000;
 	-fx-min-height:70px;
 }
 
@@ -18,7 +24,7 @@
 	-fx-border-width: 0 1 0 0;
 	-fx-border-style:solid;
 	-fx-border-color: #1B201B;
-	-fx-min-width: 170px;
+	-fx-min-width: 160px;
 }
 
 #centerPane
@@ -33,7 +39,10 @@
 
 #downPane
 {
-	
+	-fx-min-height:50px;
+	-fx-border-width: 1 0 0 0;
+	-fx-border-style:solid;
+	-fx-border-color: black;
 }
 
 #menuButtons
@@ -41,7 +50,7 @@
 	-fx-background-color: #2C302C;
     -fx-padding: 3 30 3 30;
     -fx-text-fill: #989997;
-    -fx-font-size: 16px;
+    -fx-font-size: 17px;
 }
 
 #menuButtons:hover
@@ -61,7 +70,7 @@
 	-fx-text-fill: white;
 	-fx-border-color:#69DB5A;
 	-fx-border-width: 0 0 0 4;
-	-fx-font-size: 17px;
+	-fx-font-size: 18px;
 }
 
 #menuButtonsClicked:hover
@@ -71,15 +80,18 @@
 
 #menuLabel
 {
-	-fx-font-size: 16px;
+	-fx-font-size: 17px;
 	-fx-padding: 5 30 5 10;
 	-fx-text-fill: #989997;
+	-fx-border-width: 0 0 1 0;
+	-fx-border-color:black;
+	-fx-border-style:dotted; 
 }
 
 #UpPanelMenu
 {
     -fx-background-color: #2C302C;
-    -fx-font-size: 15px;
+    -fx-font-size: 14px;
 }
 
 #UpPanelMenu .label
@@ -90,11 +102,38 @@
 #szukaj
 {
 	-fx-min-width:100px;
-	-fx-font-size:15px;
+	-fx-font-size:16px;
 	-fx-background-radius: 50px;
 }
 
 #szukaj:focused
 {
 	-fx-background-color: #2C302C ,-fx-box-border,-fx-control-inner-background;
+}
+
+#nowaPlaylistaButton
+{
+	-fx-background-color: #2C302C;
+    -fx-padding: 6 30 6 30;
+    -fx-text-fill: #989997;
+    -fx-font-size: 17px;
+    -fx-border-width: 1 0 1 0;
+    -fx-border-color: #000000;
+}
+
+#nowaPlaylistaButton:hover
+{
+	-fx-background-color: #1B201B;
+}
+
+#musicBar
+{
+	-fx-padding: 20 0 0 0;
+}
+
+#musicBar > .bar
+{
+	-fx-background-color: #69DB5A;
+	-fx-background-insets: 1 1 2 1;
+    -fx-padding: 0.20em;
 }
