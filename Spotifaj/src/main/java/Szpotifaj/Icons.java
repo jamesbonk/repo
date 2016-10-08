@@ -1,6 +1,5 @@
 package Szpotifaj;
 
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -14,41 +13,92 @@ import jiconfont.javafx.IconNode;
 
 public class Icons 
 {
-	ImageView chevronLeft,chevronRight,search,archive,music,play,note,folderOpen,mic,plusSquare;
+	IconNode chevronLeft,chevronRight,search,archive,music,note,folderOpen,mic,plusSquare;
+	IconNode prevSong,nextSong,playButton;
 	
 	Icons()
 	{
 		IconFontFX.register(FontAwesome.getIconFont());
 		
-
-		Stop[] stops = new Stop[]{new Stop(0, Color.GRAY), new Stop(1, Color.GRAY)};
-		LinearGradient fill = new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE, stops);
+		//przycisk wstecz
+		chevronLeft = new IconNode(FontAwesome.CHEVRON_LEFT);
+		chevronLeft.setIconSize(20);
+		chevronLeft.setFill(Color.GRAY);
 		
-		Stop[] stops2 = new Stop[]{new Stop(0, Color.BLACK), new Stop(1, Color.BLACK)};
-		LinearGradient fill2 = new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE, stops2);
+		//przecisk next
+		chevronRight = new IconNode(FontAwesome.CHEVRON_RIGHT);
+		chevronRight.setIconSize(20);
+		chevronRight.setFill(Color.GRAY);
 		
-		Color stroke = Color.GRAY;
-		Image image1 = IconFontFX.buildImage(FontAwesome.CHEVRON_LEFT, 20, fill, stroke);
-		Image image2 = IconFontFX.buildImage(FontAwesome.CHEVRON_RIGHT, 20, fill, stroke);
-		Image image3 = IconFontFX.buildImage(FontAwesome.SEARCH, 15, fill2, Color.BLACK);
-		Image image4 = IconFontFX.buildImage(Entypo.ARCHIVE, 15, fill, stroke);
-		Image image5 = IconFontFX.buildImage(Entypo.NOTE_BEAMED, 21, fill, stroke);
-		Image image6 = IconFontFX.buildImage(FontAwesome.PLAY_CIRCLE_O, 15, fill, stroke);
-		Image image7 = IconFontFX.buildImage(Entypo.NOTE, 21, fill, stroke);
-		Image image8 = IconFontFX.buildImage(FontAwesome.FOLDER_OPEN_O, 21, fill, stroke);
-		Image image9 = IconFontFX.buildImage(FontAwesome.MICROPHONE, 21, fill, stroke);
-		Image image10 = IconFontFX.buildImage(FontAwesome.PLUS_SQUARE_O, 23, fill, stroke);
+		//ikona na pasku wyszukiwania (lupka)
+		search = new IconNode(FontAwesome.SEARCH);
+		search.setIconSize(15);
+		search.setFill(Color.GRAY);
 		
-		chevronLeft = new ImageView(image1);
-		chevronRight = new ImageView(image2);
-		search = new ImageView(image3);
-		archive = new ImageView(image4);
-		music = new ImageView(image5);
-		play = new ImageView(image6);
-		note = new ImageView(image7);
-		folderOpen = new ImageView(image8);
-		mic = new ImageView(image9);
-		plusSquare = new ImageView(image10);
+		//ikona przy przysiku przegl¹dania
+		archive = new IconNode(FontAwesome.STACK_OVERFLOW);
+		archive.setIconSize(22);
+		archive.setFill(Color.GRAY);
+		
+		//ikona przy przyciku playlisty
+		music = new IconNode(Entypo.NOTE_BEAMED);
+		music.setIconSize(22);
+		music.setFill(Color.GRAY);
+		
+		//ikona przycisku play
+		playButton = new IconNode(FontAwesome.PLAY_CIRCLE_O);
+		playButton.setIconSize(33);
+		playButton.setFill(Color.GRAY);
+		
+		note = new IconNode(Entypo.NOTE);
+		note.setIconSize(22);
+		note.setFill(Color.GRAY);
+		
+		//ikona przy przycisku utwory
+		folderOpen = new IconNode(FontAwesome.FOLDER_OPEN_O);
+		folderOpen.setIconSize(22);
+		folderOpen.setFill(Color.GRAY);
+		
+		//ikona przy przycisku wykonawcy
+		mic = new IconNode(FontAwesome.MICROPHONE);
+		mic.setIconSize(22);
+		mic.setFill(Color.GRAY);
+		
+		//ikona przy nowej playliscie
+		plusSquare = new IconNode(FontAwesome.PLUS_SQUARE_O);
+		plusSquare.setIconSize(24);
+		plusSquare.setFill(Color.GRAY);
+		
+		prevSong = new IconNode(FontAwesome.ANGLE_DOUBLE_LEFT);
+		prevSong.setIconSize(29);
+		prevSong.setFill(Color.GRAY);
+		
+		nextSong = new IconNode(FontAwesome.ANGLE_DOUBLE_RIGHT);
+		nextSong.setIconSize(29);
+		nextSong.setFill(Color.GRAY);
 	}
 	
+	public void changeColor(String s, int i)
+	{
+		if(s == "  Przegl¹daj" && i == 0)
+			archive.setFill(Color.WHITE);
+		else if(s == "  Przegl¹daj" && i == 1)
+			archive.setFill(Color.GRAY);
+		else if(s == "  Utwory" && i == 0)
+			note.setFill(Color.WHITE);
+		else if(s == "  Utwory" && i == 1)
+			note.setFill(Color.GRAY);
+		else if(s == "  Albumy" && i == 0)
+			folderOpen.setFill(Color.WHITE);
+		else if(s == "  Albumy" && i == 1)
+			folderOpen.setFill(Color.GRAY);
+		else if(s == "  Wykonawcy" && i == 0)
+			mic.setFill(Color.WHITE);
+		else if(s == "  Wykonawcy" && i == 1)
+			mic.setFill(Color.GRAY);
+		else if(s == "  Playlisty" && i == 0)
+			music.setFill(Color.WHITE);
+		else if(s == "  Playlisty" && i == 1)
+			music.setFill(Color.GRAY);
+	}
 }

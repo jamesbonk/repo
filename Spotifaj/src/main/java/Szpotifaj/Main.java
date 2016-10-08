@@ -37,7 +37,7 @@ public class Main extends Application {
 	TextField szukaj;
 	ProgressBar musicBar;
 	Icons icons;
-	Button chevronLeftButton,chevronRightButton;
+	Button chevronLeftButton,chevronRightButton,nextSong,prevSong,playButton;
 	
 	@Override
 	
@@ -45,8 +45,8 @@ public class Main extends Application {
 	{
 		primaryStage.setTitle("Szpotifaj");
 		borderPane = new BorderPane();
-		listener = new Listener(this);
 		icons = new Icons();
+		listener = new Listener(this,icons);
 		
 		//left panel//
 		setLeftButtons();
@@ -69,10 +69,25 @@ public class Main extends Application {
 		
 		//bottom panel
 		musicBar = new ProgressBar();
-		musicBar.setMinWidth(1000);
+		musicBar.setMinWidth(850);
 		musicBar.setId("musicBar");
-		Label lab = new Label("Przelaczanieblablablablablablabla");
-		downPane = new HBox(lab,musicBar);
+		
+		nextSong = new Button("",icons.nextSong);
+		nextSong.setStyle("-fx-background-color: #2C302C;" + 
+		"-fx-padding: 10 60 5 5");
+		nextSong.setId("musicButtons");
+		
+		prevSong = new Button("",icons.prevSong);
+		prevSong.setStyle("-fx-background-color: #2C302C;" + 
+				"-fx-padding: 10 5 5 25");
+		prevSong.setId("musicButtons");
+		
+		playButton = new Button("",icons.playButton);
+		playButton.setStyle("-fx-background-color: #2C302C;" + 
+				"-fx-padding: 8 5 5 5");
+		playButton.setId("musicButtons");
+		
+		downPane = new HBox(prevSong,playButton,nextSong,musicBar);
 		downPane.setId("downPane");
 		borderPane.setBottom(downPane);
 		
@@ -133,7 +148,7 @@ public class Main extends Application {
 		
 		ToggleGroup menuGroup = new ToggleGroup();
 		
-		przegladaj = new ToggleButton("Przegl¹daj",icons.archive);
+		przegladaj = new ToggleButton("  Przegl¹daj",icons.archive);
 		przegladaj.setToggleGroup(menuGroup);
 		przegladaj.setId("menuButtonsClicked");
 		przegladaj.setOnAction(listener);
