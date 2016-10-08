@@ -11,6 +11,12 @@
 	-fx-font-family: Lato;
 }
 
+.primaryStage
+{
+	-fx-background-color: #2C302C;
+	-fx-alignment:center;
+}
+
 #upPane
 {
 	-fx-border-width: 0 0 1 0;
@@ -48,7 +54,7 @@
 #menuButtons
 {
 	-fx-background-color: #2C302C;
-    -fx-padding: 3 30 3 30;
+    -fx-padding: 5 30 5 15;
     -fx-text-fill: #989997;
     -fx-font-size: 17px;
 }
@@ -66,7 +72,7 @@
 #menuButtonsClicked
 {
 	-fx-background-color: #2C302C;
-	-fx-padding: 3 30 3 26;
+	-fx-padding: 5 30 5 15;
 	-fx-text-fill: white;
 	-fx-border-color:#69DB5A;
 	-fx-border-width: 0 0 0 4;
@@ -136,4 +142,17 @@
 	-fx-background-color: #69DB5A;
 	-fx-background-insets: 1 1 2 1;
     -fx-padding: 0.20em;
+}
+
+#chevronButtonLeft
+{
+	-fx-background-color: #2C302C;
+	-fx-padding: 5 0 0 20;
+}
+
+#chevronButtonRight
+{
+	-fx-background-color: #2C302C;
+	-fx-padding: 5 0 0 0;
+	
 }

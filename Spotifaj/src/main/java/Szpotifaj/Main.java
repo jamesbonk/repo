@@ -1,4 +1,4 @@
-package application;
+package Szpotifaj;
 	
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -14,6 +14,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -35,6 +36,8 @@ public class Main extends Application {
 	ToggleButton playlisty, przegladaj, utwory, albumy, wykonawcy;
 	TextField szukaj;
 	ProgressBar musicBar;
+	Icons icons;
+	Button chevronLeftButton,chevronRightButton;
 	
 	@Override
 	
@@ -43,6 +46,7 @@ public class Main extends Application {
 		primaryStage.setTitle("Szpotifaj");
 		borderPane = new BorderPane();
 		listener = new Listener(this);
+		icons = new Icons();
 		
 		//left panel//
 		setLeftButtons();
@@ -66,7 +70,6 @@ public class Main extends Application {
 		//bottom panel
 		musicBar = new ProgressBar();
 		musicBar.setMinWidth(1000);
-		musicBar.setMaxHeight(2);
 		musicBar.setId("musicBar");
 		Label lab = new Label("Przelaczanieblablablablablablabla");
 		downPane = new HBox(lab,musicBar);
@@ -77,8 +80,9 @@ public class Main extends Application {
 		Scene scene = new Scene(borderPane,width,height);
 		
 		String cssPath = this.getClass().getResource("application.css").toExternalForm();
+		String iconPath = this.getClass().getResource("App-Spotify-icon.png").toExternalForm();
 		scene.getStylesheets().add(cssPath);
-		
+		primaryStage.getIcons().add(new Image(iconPath));
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();
@@ -98,8 +102,14 @@ public class Main extends Application {
 		view.setId("UpPanelMenu");
 		help = new MenuButton("Help");
 		help.setId("UpPanelMenu");
-		szukaj = new TextField("Szukaj");
+		szukaj = new TextField("   Szukaj");
 		szukaj.setId("szukaj");
+		
+		chevronLeftButton = new Button("",icons.chevronLeft);
+		chevronLeftButton.setId("chevronButtonLeft");
+		
+		chevronRightButton = new Button("",icons.chevronRight);
+		chevronRightButton.setId("chevronButtonRight");
 			
 		upPane = new GridPane();
 		upPane.setId("upPane");
@@ -109,6 +119,9 @@ public class Main extends Application {
 		upPane.add(view, 2, 0, 1, 1);
 		upPane.add(help, 3, 0, 1, 1);
 		upPane.add(szukaj, 3, 1, 1, 1);
+		upPane.add(icons.search, 3, 1, 1, 1);
+		upPane.add(chevronLeftButton, 0, 1, 1, 1);
+		upPane.add(chevronRightButton, 1, 1, 1, 1);
 			
 		borderPane.setTop(upPane);
 	}
@@ -120,34 +133,34 @@ public class Main extends Application {
 		
 		ToggleGroup menuGroup = new ToggleGroup();
 		
-		przegladaj = new ToggleButton("Przegl¹daj");
+		przegladaj = new ToggleButton("Przegl¹daj",icons.archive);
 		przegladaj.setToggleGroup(menuGroup);
 		przegladaj.setId("menuButtonsClicked");
 		przegladaj.setOnAction(listener);
 		
-		utwory = new ToggleButton("Utwory");
+		utwory = new ToggleButton("  Utwory",icons.note);
 		utwory.setToggleGroup(menuGroup);
 		utwory.setId("menuButtons");
 		utwory.setOnAction(listener);
 		
-		albumy = new ToggleButton("Albumy"); 
+		albumy = new ToggleButton("  Albumy",icons.folderOpen); 
 		albumy.setToggleGroup(menuGroup);
 		albumy.setId("menuButtons");
 		albumy.setOnAction(listener);
 		
-		wykonawcy = new ToggleButton("Wykonawcy"); 
+		wykonawcy = new ToggleButton("  Wykonawcy", icons.mic); 
 		wykonawcy.setToggleGroup(menuGroup);
 		wykonawcy.setId("menuButtons");
 		wykonawcy.setOnAction(listener);
 		
-		playlisty = new ToggleButton("Playlisty");
+		playlisty = new ToggleButton("  Playlisty",icons.music);
 		playlisty.setToggleGroup(menuGroup);
 		playlisty.setId("menuButtons");
 		playlisty.setOnAction(listener);
 		
 		listener.setFirstClicked();
 		
-		Button nowaPlaylista = new Button("Nowa playlista");
+		Button nowaPlaylista = new Button("  Nowa playlista",icons.plusSquare);
 		nowaPlaylista.setId("nowaPlaylistaButton");
 		
 		leftPane = new VBox(menuLabel,przegladaj,utwory,albumy,wykonawcy,playlisty,nowaPlaylista);

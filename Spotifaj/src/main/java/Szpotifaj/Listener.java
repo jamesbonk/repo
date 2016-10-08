@@ -1,4 +1,4 @@
-package application;
+package Szpotifaj;
 
 import java.util.ArrayList;
 
@@ -28,37 +28,32 @@ public class Listener implements EventHandler
 		
 		if(source == frame.przegladaj)
 		{
-			if(frame.przegladaj.isSelected()==false)
-			{
-				frame.przegladaj.setId("menuButtonsClicked");
-				alreadyClicked.remove(0).setId("menuButtons");
-				alreadyClicked.add(frame.przegladaj);
-				frame.przegladaj.setSelected(true);
-			}
-			
+			alreadyClicked.remove(0).setId("menuButtons");
+			frame.przegladaj.setId("menuButtonsClicked");
+			alreadyClicked.add(frame.przegladaj);
 		}
 		if(source == frame.utwory)
 		{
-			frame.utwory.setId("menuButtonsClicked");
 			alreadyClicked.remove(0).setId("menuButtons");
+			frame.utwory.setId("menuButtonsClicked");
 			alreadyClicked.add(frame.utwory);
 		}
 		if(source == frame.albumy)
 		{
-			frame.albumy.setId("menuButtonsClicked");
 			alreadyClicked.remove(0).setId("menuButtons");
+			frame.albumy.setId("menuButtonsClicked");
 			alreadyClicked.add(frame.albumy);
 		}
 		if(source == frame.wykonawcy)
 		{
-			frame.wykonawcy.setId("menuButtonsClicked");
 			alreadyClicked.remove(0).setId("menuButtons");
+			frame.wykonawcy.setId("menuButtonsClicked");
 			alreadyClicked.add(frame.wykonawcy);
 		}
 		if(source == frame.playlisty)
 		{
-			frame.playlisty.setId("menuButtonsClicked");
 			alreadyClicked.remove(0).setId("menuButtons");
+			frame.playlisty.setId("menuButtonsClicked");
 			alreadyClicked.add(frame.playlisty);
 		}
 	}
