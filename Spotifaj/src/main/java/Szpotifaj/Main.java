@@ -2,8 +2,6 @@ package Szpotifaj;
 	
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.util.ArrayList;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -16,7 +14,6 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -24,12 +21,12 @@ import javafx.scene.layout.VBox;
 public class Main extends Application {
 	
 	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+	ImgReader imgReader;
 	double width = dim.getWidth();
 	double height = dim.getHeight()-70;
 	MenuButton file,edit,view,help;
-	FlowPane centerPane;
 	HBox downPane;
-	GridPane upPane;
+	GridPane upPane, centerPane;
 	VBox leftPane, rightPane;
 	BorderPane borderPane;
 	Listener listener;
@@ -47,6 +44,7 @@ public class Main extends Application {
 		borderPane = new BorderPane();
 		icons = new Icons();
 		listener = new Listener(this,icons);
+		imgReader = new ImgReader();
 		
 		//left panel//
 		setLeftButtons();
@@ -56,7 +54,7 @@ public class Main extends Application {
 			
 			
 		//center panel
-		centerPane = new FlowPane();
+		centerPane = new GridPane();
 		centerPane.setId("centerPane");
 		borderPane.setCenter(centerPane);
 		
@@ -68,28 +66,7 @@ public class Main extends Application {
 		
 		
 		//bottom panel
-		musicBar = new ProgressBar();
-		musicBar.setMinWidth(850);
-		musicBar.setId("musicBar");
-		
-		nextSong = new Button("",icons.nextSong);
-		nextSong.setStyle("-fx-background-color: #2C302C;" + 
-		"-fx-padding: 10 60 5 5");
-		nextSong.setId("musicButtons");
-		
-		prevSong = new Button("",icons.prevSong);
-		prevSong.setStyle("-fx-background-color: #2C302C;" + 
-				"-fx-padding: 10 5 5 25");
-		prevSong.setId("musicButtons");
-		
-		playButton = new Button("",icons.playButton);
-		playButton.setStyle("-fx-background-color: #2C302C;" + 
-				"-fx-padding: 8 5 5 5");
-		playButton.setId("musicButtons");
-		
-		downPane = new HBox(prevSong,playButton,nextSong,musicBar);
-		downPane.setId("downPane");
-		borderPane.setBottom(downPane);
+		setBottomPanel();
 		
 		//ustawianie sceny
 		Scene scene = new Scene(borderPane,width,height);
@@ -182,5 +159,31 @@ public class Main extends Application {
 		leftPane.setId("leftPane");
 		
 		borderPane.setLeft(leftPane);
+	}
+	
+	public void setBottomPanel()
+	{
+		musicBar = new ProgressBar();
+		musicBar.setMinWidth(850);
+		musicBar.setId("musicBar");
+		
+		nextSong = new Button("",icons.nextSong);
+		nextSong.setStyle("-fx-background-color: #2C302C;" + 
+		"-fx-padding: 10 60 5 5");
+		nextSong.setId("musicButtons");
+		
+		prevSong = new Button("",icons.prevSong);
+		prevSong.setStyle("-fx-background-color: #2C302C;" + 
+				"-fx-padding: 10 5 5 25");
+		prevSong.setId("musicButtons");
+		
+		playButton = new Button("",icons.playButton);
+		playButton.setStyle("-fx-background-color: #2C302C;" + 
+				"-fx-padding: 8 5 5 5");
+		playButton.setId("musicButtons");
+		
+		downPane = new HBox(prevSong,playButton,nextSong,musicBar);
+		downPane.setId("downPane");
+		borderPane.setBottom(downPane);
 	}
 }
