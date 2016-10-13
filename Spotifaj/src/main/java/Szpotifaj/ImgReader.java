@@ -1,11 +1,5 @@
 package Szpotifaj;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 import javafx.scene.image.ImageView;
 
 public class ImgReader 
@@ -14,6 +8,12 @@ public class ImgReader
 	
 	ImgReader()
 	{	
-		hip_hop = new ImageView("img/hip_hop.jpg");
+		String Path = this.getClass().getResource("img").toExternalForm();
+		hip_hop = new ImageView(Path+"/hip_hop.jpg");
+		pop = new ImageView(Path+"/pop.png");
+		klasyczna = new ImageView(Path+"/klasyczna.jpg");
+		reggae = new ImageView(Path+"/reggae.png");
+		rock = new ImageView(Path+"/rock.png");
+		jazz = new ImageView(Path+"/jazz.png");
 	}
 }

@@ -36,6 +36,7 @@
 #centerPane
 {
 	-fx-background-color: #0A100B;
+	-fx-padding: 50 0 0 80;
 }
 
 #rightPane

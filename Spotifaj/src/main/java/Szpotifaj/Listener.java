@@ -40,6 +40,7 @@ public class Listener implements EventHandler
 			frame.przegladaj.setId("menuButtonsClicked");
 			alreadyClicked.add(frame.przegladaj);
 			icons.changeColor(alreadyClicked.get(0).getText(), 0);
+			panelChanger.panelPrzegladaj();
 		}
 		if(source == frame.utwory)
 		{
@@ -48,6 +49,7 @@ public class Listener implements EventHandler
 			frame.utwory.setId("menuButtonsClicked");
 			alreadyClicked.add(frame.utwory);
 			icons.changeColor(alreadyClicked.get(0).getText(), 0);
+			panelChanger.panelClear();
 		}
 		if(source == frame.albumy)
 		{
@@ -56,6 +58,7 @@ public class Listener implements EventHandler
 			frame.albumy.setId("menuButtonsClicked");
 			alreadyClicked.add(frame.albumy);
 			icons.changeColor(alreadyClicked.get(0).getText(), 0);
+			panelChanger.panelClear();
 		}
 		if(source == frame.wykonawcy)
 		{
@@ -64,6 +67,7 @@ public class Listener implements EventHandler
 			frame.wykonawcy.setId("menuButtonsClicked");
 			alreadyClicked.add(frame.wykonawcy);
 			icons.changeColor(alreadyClicked.get(0).getText(), 0);
+			panelChanger.panelClear();
 		}
 		if(source == frame.playlisty)
 		{
@@ -72,6 +76,7 @@ public class Listener implements EventHandler
 			frame.playlisty.setId("menuButtonsClicked");
 			alreadyClicked.add(frame.playlisty);
 			icons.changeColor(alreadyClicked.get(0).getText(), 0);
+			panelChanger.panelClear();
 		}
 	}
 

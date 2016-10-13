@@ -43,8 +43,8 @@ public class Main extends Application {
 		primaryStage.setTitle("Szpotifaj");
 		borderPane = new BorderPane();
 		icons = new Icons();
-		listener = new Listener(this,icons);
 		imgReader = new ImgReader();
+		listener = new Listener(this,icons);
 		
 		//left panel//
 		setLeftButtons();
@@ -57,6 +57,7 @@ public class Main extends Application {
 		centerPane = new GridPane();
 		centerPane.setId("centerPane");
 		borderPane.setCenter(centerPane);
+		listener.panelChanger.panelPrzegladaj();
 		
 		
 		//right panel
