@@ -1,15 +1,19 @@
 package DB_Connection;
 
+import java.util.ArrayList;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Album 
 {
 	@Id
 	@GeneratedValue
+	@Column(name = "IdAlbum")
 	int IdAlbum;
 	@Column(nullable = false, length = 50)
 	String albumName;

@@ -1,37 +1,31 @@
 package DB_Connection;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-public class Track 
+public class Track
 {
-	@Id
-	int IdTrack;
-	@Id
-	int IdAlbum;
+	@EmbeddedId
+    TrackId trackId;
+	
 	@ManyToOne
-	@PrimaryKeyJoinColumn(name="IdAlbum", referencedColumnName="IdAlbum")
-	Album IdAlbumFK;
+    @JoinColumn(name = "IdAlbum", referencedColumnName = "idAlbum")
+	Album IdAlbum;
+	
 	@ManyToOne
-	@JoinColumn(name = "IdSinger")
+	@JoinColumn(nullable = false, name = "IdSinger")
 	Singer IdSinger;
 	@ManyToOne
-	@JoinColumn(name = "IdGenre")
+	@JoinColumn(nullable = false, name = "IdGenre")
 	Genre IdGenre;
 	@Column(nullable = false, length = 40)
 	String trackName;
 	
-	public int getIdTrack() {
-		return IdTrack;
-	}
-	public void setIdTrack(int idTrack) {
-		IdTrack = idTrack;
-	}
 	public Singer getIdSinger() {
 		return IdSinger;
 	}
@@ -43,12 +37,6 @@ public class Track
 	}
 	public void setIdGenre(Genre idGenre) {
 		IdGenre = idGenre;
-	}
-	public Album getIdAlbumFK() {
-		return IdAlbumFK;
-	}
-	public void setIdAlbumFK(Album idAlbum) {
-		IdAlbumFK = idAlbum;
 	}
 	public String getTrackName() {
 		return trackName;
