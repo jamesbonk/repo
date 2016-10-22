@@ -15,12 +15,14 @@ public class Listener implements EventHandler
 	Icons icons;
 	Object source;
 	CenterPanelChanger panelChanger;
+	PrzegladajListener listener;
 	
 	Listener(Main frame, Icons icons)
 	{
 		this.frame = frame;
 		this.icons = icons;
-		panelChanger = new CenterPanelChanger(this.frame);
+		listener = new PrzegladajListener(frame);
+		panelChanger = new CenterPanelChanger(this.frame,listener,frame.songButtons);
 	}
 	
 	void setFirstClicked()

@@ -3,3 +3,23 @@
 	-fx-padding: 0 0 0 0;
 	-fx-font-size: 20;
 }
+
+.label
+{
+	-fx-padding: 0 20 0 20;
+	-fx-font-size: 16;
+	-fx-text-fill: #ffffff;
+	-fx-border-style: solid;
+	-fx-border-width: 0 0 1 0; 
+	-fx-border-color: #000000;
+}
+
+#upLabel
+{
+	-fx-text-fill: #565656;
+}
+
+.grid
+{
+	
+}

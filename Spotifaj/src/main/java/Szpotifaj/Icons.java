@@ -14,7 +14,7 @@ import jiconfont.javafx.IconNode;
 public class Icons 
 {
 	IconNode chevronLeft,chevronRight,search,archive,music,note,folderOpen,mic,plusSquare;
-	IconNode prevSong,nextSong,playButton;
+	IconNode prevSong,nextSong,playButton,playButton2;
 	
 	Icons()
 	{
@@ -48,6 +48,10 @@ public class Icons
 		//ikona przycisku play
 		playButton = new IconNode(FontAwesome.PLAY_CIRCLE_O);
 		playButton.setIconSize(33);
+		playButton.setFill(Color.GRAY);
+		
+		playButton2 = new IconNode(FontAwesome.PLAY_CIRCLE_O);
+		playButton2.setIconSize(20);
 		playButton.setFill(Color.GRAY);
 		
 		note = new IconNode(Entypo.NOTE);

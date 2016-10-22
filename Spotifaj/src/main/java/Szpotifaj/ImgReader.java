@@ -4,7 +4,7 @@ import javafx.scene.image.ImageView;
 
 public class ImgReader 
 {
-	public ImageView rock, pop, klasyczna,reggae,hip_hop,jazz;
+	public static ImageView rock, pop, klasyczna,reggae,hip_hop,jazz;
 	
 	ImgReader()
 	{	

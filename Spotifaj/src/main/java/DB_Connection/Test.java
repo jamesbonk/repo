@@ -5,11 +5,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class Test {
+	
+	public static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MyDatabase");
+	public static EntityManager entityManager = entityManagerFactory.createEntityManager();
+	
 	public static void main(String[] args)
 	{
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MyDatabase");
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		
 		entityManager.close();
 		entityManagerFactory.close();
 	}

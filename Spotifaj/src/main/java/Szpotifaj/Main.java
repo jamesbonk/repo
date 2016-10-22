@@ -2,13 +2,20 @@ package Szpotifaj;
 	
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Application;
+import javafx.concurrent.Task;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -35,16 +42,20 @@ public class Main extends Application {
 	ProgressBar musicBar;
 	Icons icons;
 	Button chevronLeftButton,chevronRightButton,nextSong,prevSong,playButton;
+	ScrollPane scrollPane;
+	ListsMusic listsMusic;
+	SongButtons songButtons;
 	
 	@Override
-	
 	public void start(Stage primaryStage) 
 	{
 		primaryStage.setTitle("Szpotifaj");
 		borderPane = new BorderPane();
 		icons = new Icons();
+		songButtons = new SongButtons(icons);
 		imgReader = new ImgReader();
 		listener = new Listener(this,icons);
+		listsMusic = new ListsMusic();
 		
 		//left panel//
 		setLeftButtons();
@@ -56,7 +67,9 @@ public class Main extends Application {
 		//center panel
 		centerPane = new GridPane();
 		centerPane.setId("centerPane");
-		borderPane.setCenter(centerPane);
+		scrollPane = new ScrollPane();
+		scrollPane.setContent(centerPane);
+		borderPane.setCenter(scrollPane);
 		listener.panelChanger.panelPrzegladaj();
 		
 		
@@ -79,11 +92,9 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();
+		
 	}
 	
-	public static void main(String[] args) {
-		launch(args);
-	}
 	
 	public void setUpButtons()
 	{
@@ -187,4 +198,5 @@ public class Main extends Application {
 		downPane.setId("downPane");
 		borderPane.setBottom(downPane);
 	}
+
 }
