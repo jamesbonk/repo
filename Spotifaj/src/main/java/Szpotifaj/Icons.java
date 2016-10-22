@@ -14,7 +14,7 @@ import jiconfont.javafx.IconNode;
 public class Icons 
 {
 	IconNode chevronLeft,chevronRight,search,archive,music,note,folderOpen,mic,plusSquare;
-	IconNode prevSong,nextSong,playButton,pauseButton;
+	IconNode prevSong,nextSong,playButton;
 	
 	Icons()
 	{
@@ -49,11 +49,6 @@ public class Icons
 		playButton = new IconNode(FontAwesome.PLAY_CIRCLE_O);
 		playButton.setIconSize(33);
 		playButton.setFill(Color.GRAY);
-		
-		//ikona przycisku pauzy
-		pauseButton = new IconNode(FontAwesome.PAUSE_CIRCLE_O);
-		pauseButton.setIconSize(33);
-		pauseButton.setFill(Color.GRAY);
 		
 		note = new IconNode(Entypo.NOTE);
 		note.setIconSize(22);

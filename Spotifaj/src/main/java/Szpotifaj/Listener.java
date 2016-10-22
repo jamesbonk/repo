@@ -1,6 +1,5 @@
 package Szpotifaj;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import com.sun.prism.paint.Color;
@@ -8,9 +7,6 @@ import com.sun.prism.paint.Color;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaPlayer.Status;
 
 public class Listener implements EventHandler
 {
@@ -19,16 +15,12 @@ public class Listener implements EventHandler
 	Icons icons;
 	Object source;
 	CenterPanelChanger panelChanger;
-
 	
 	Listener(Main frame, Icons icons)
 	{
 		this.frame = frame;
 		this.icons = icons;
 		panelChanger = new CenterPanelChanger(this.frame);
-		
-		
-		
 	}
 	
 	void setFirstClicked()
@@ -85,31 +77,6 @@ public class Listener implements EventHandler
 			alreadyClicked.add(frame.playlisty);
 			icons.changeColor(alreadyClicked.get(0).getText(), 0);
 			panelChanger.panelClear();
-		}
-		if(source == frame.playButton)
-		{
-			
-			
-			
-			
-			
-			Status status = frame.mediaPlayer.getStatus();
-
-			if (status == Status.PLAYING) {
-				
-			frame.mediaPlayer.pause();
-			frame.playButton.setGraphic(icons.playButton);
-						
-			} else {
-				
-			frame.mediaPlayer.play();
-			frame.playButton.setGraphic(icons.pauseButton);
-			
-			
-			}
-			
-		
-			
 		}
 	}
 

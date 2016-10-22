@@ -2,8 +2,6 @@ package Szpotifaj;
 	
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.io.File;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -19,8 +17,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
 	
@@ -39,8 +35,6 @@ public class Main extends Application {
 	ProgressBar musicBar;
 	Icons icons;
 	Button chevronLeftButton,chevronRightButton,nextSong,prevSong,playButton;
-	static Media media;
-	static MediaPlayer mediaPlayer;
 	
 	@Override
 	
@@ -88,11 +82,6 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		
-		String song = "D:/muzyka/01. Coldplay feat. Beyonce - Hymn For The Weekend.mp3";
-		media = new Media(new File(song).toURI().toString());
-		mediaPlayer = new MediaPlayer(media);
-		
 		launch(args);
 	}
 	
@@ -179,8 +168,6 @@ public class Main extends Application {
 		musicBar.setMinWidth(850);
 		musicBar.setId("musicBar");
 		
-		
-		
 		nextSong = new Button("",icons.nextSong);
 		nextSong.setStyle("-fx-background-color: #2C302C;" + 
 		"-fx-padding: 10 60 5 5");
@@ -195,7 +182,6 @@ public class Main extends Application {
 		playButton.setStyle("-fx-background-color: #2C302C;" + 
 				"-fx-padding: 8 5 5 5");
 		playButton.setId("musicButtons");
-		playButton.setOnAction(listener);
 		
 		downPane = new HBox(prevSong,playButton,nextSong,musicBar);
 		downPane.setId("downPane");
