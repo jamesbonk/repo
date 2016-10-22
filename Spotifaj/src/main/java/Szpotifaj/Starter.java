@@ -8,6 +8,8 @@ public class Starter {
 		ListsMusic.threadList.add(new Thread() {
             @Override
             public void run() {
+            	
+            	
                 Application.launch(Main.class);
             }
         });

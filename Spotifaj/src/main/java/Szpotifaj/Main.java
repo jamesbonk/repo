@@ -2,6 +2,7 @@ package Szpotifaj;
 	
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
 	
@@ -45,6 +48,8 @@ public class Main extends Application {
 	ScrollPane scrollPane;
 	ListsMusic listsMusic;
 	SongButtons songButtons;
+	static Media media;
+	static MediaPlayer mediaPlayer;
 	
 	@Override
 	public void start(Stage primaryStage) 
@@ -90,6 +95,11 @@ public class Main extends Application {
 		scene.getStylesheets().add(cssPath);
 		primaryStage.getIcons().add(new Image(iconPath));
 		primaryStage.setScene(scene);
+		
+		//SZTYWNIUTKO POTEM ZMIENIE O
+		String song = "D:/muzyka/01. Coldplay feat. Beyonce - Hymn For The Weekend.mp3";
+		media = new Media(new File(song).toURI().toString());
+		mediaPlayer = new MediaPlayer(media);
 		
 		primaryStage.show();
 		
@@ -193,6 +203,7 @@ public class Main extends Application {
 		playButton.setStyle("-fx-background-color: #2C302C;" + 
 				"-fx-padding: 8 5 5 5");
 		playButton.setId("musicButtons");
+		playButton.setOnAction(listener);
 		
 		downPane = new HBox(prevSong,playButton,nextSong,musicBar);
 		downPane.setId("downPane");
